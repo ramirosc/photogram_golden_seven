@@ -17,6 +17,13 @@ def create_row
 
 end
 
+def destroy
+  i = Photo.find_by({:id => params[:id]})
+  i.destroy
+
+  redirect_to("http://localhost:3000/photos")
+
+end
 
 
 
