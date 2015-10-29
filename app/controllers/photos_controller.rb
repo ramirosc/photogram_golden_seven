@@ -2,10 +2,16 @@ class PhotosController < ApplicationController
   def index
     @list_of_photos = Photo.all
   end
-def show
 
-@photo= Photo.find_by({:id => params[:id]})
+def show
+  @photo= Photo.find_by({:id => params[:id]})
 end
+
+
+def edit_form
+  @photo= Photo.find_by({:id => params[:id]})
+end
+
 
 def create_row
   p = Photo.new
@@ -14,8 +20,8 @@ def create_row
   p.save
 
   redirect_to("http://localhost:3000/photos")
-
 end
+
 
 def destroy
   i = Photo.find_by({:id => params[:id]})
@@ -25,6 +31,15 @@ def destroy
 
 end
 
+def update_row
+  i = Photo.find_by({:id => params[:id]})
+  i.caption = params[:the_caption]
+  i.source = params[:the_source]
+  i.save
+
+  redirect_to("http://localhost:3000/photos/")
+
+end
 
 
 
